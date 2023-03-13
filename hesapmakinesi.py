@@ -20,3 +20,6 @@ else :
             print("İşlem Sonucunuz : ", (sayi1) + (sayi2))
         elif islem == 4:
             print("İşlem Sonucunuz : ", (sayi1) - (sayi2))
+
+        
+#commitdenemesi
