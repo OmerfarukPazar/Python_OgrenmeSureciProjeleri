@@ -7,3 +7,5 @@ kullanicisil=input("silinecek kullanıcı : ")
 kullanicilar.remove(kullanicisil)
 
 print(kullanicilar)
+
+#Başarılı deneme
