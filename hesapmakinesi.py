@@ -23,3 +23,4 @@ else :
 
         
 #commitdenemesi
+#mali
