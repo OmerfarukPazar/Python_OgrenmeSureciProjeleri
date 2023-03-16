@@ -1,6 +1,6 @@
 #memory space
 kullanicilar=[]
-giris=input("giriş yapmak için herhangi bir tuşa basınız...")
+giris=input("\nGiriş yapmak için herhangi bir tuşa basınız...")
 menu= """\nKullanıcı Ekleme [1]
 Kullanıcı Silme [2]
 Kullanıcı Listesini Görüntüle [3]
@@ -9,14 +9,13 @@ Kullanıcı Listesini Görüntüle [3]
 def kullaniciekleme(kullaniciekle,kullanicilar):
     kullanicilar.append(kullaniciekle)
     
+# deneme yarım kaldı def kontrol(kullaniciekleme)   
 
 def kullanicisilme(kullanicisil,kullanicilar):
     kullanicilar.remove(kullanicisil)
-    """ if kullanicisil is not  kullanicilar:
-        print("hatalı kullanıcı girişi yaptınız..")
-        kullanicisilme()
-    else :
-        pass """
+""" if kullanicisil is not  kullanicilar:
+            print("hatalı kullanıcı girişi yaptınız..")
+            kullanicisilme()  """
 
 
 def kullanicilistesi(kullanicilar):
@@ -32,21 +31,22 @@ def anamenu():
         kullaniciekle=input("eklenecek kullanıcı ismi: ")
         kullaniciekleme(kullaniciekle,kullanicilar)
         print(kullanicilar)
-        input("anamenüye dönmek için enter'a basınız..")
+        input("\nAnamenüye dönmek için enter'a basınız..")
         
-    if secim=="2":
+    elif secim=="2":
         for i in kullanicilar:
             print(i)
         kullanicisil=input("\nSilinmek istenen kullanıcının adı: ")
         kullanicisilme(kullanicisil,kullanicilar)
         print("kullanici silindi..")
-        input("anamenüye dönmek için enter'a basınız..")
+        input("\nAnamenüye dönmek için enter'a basınız..")
 
-    if secim=="3":
+    elif secim=="3":
         kullanicilistesi(kullanicilar)
-        input("anamenüye dönmek için enter'a basınız..")
+        input("\nAnamenüye dönmek için enter'a basınız..")
     
-    if secim =="4":
+    elif secim =="4":
+        print("\nBaşarıyla Çıkış Yaptınız....")
         quit()
     else:
         print("\n************ Hatalı Giriş Yaptınız...")
@@ -56,28 +56,5 @@ def anamenu():
 while True:
 
     anamenu()
+
     
-
-
-
-    """ print(menu)    
-    secim=input("yapılmak istenen işlem ")
-
-    if secim=="1":
-        kullaniciekle=input("eklenecek kullanıcı ismi: ")
-        kullaniciekleme(kullaniciekle,kullanicilar)
-        print(kullanicilar)
-        
-    if secim=="2":
-        kullanicisil=input("silinmek istenen kullanıcının adı: ")
-        kullanicisilme(kullanicisil,kullanicilar)
-        print(kullanicilar)
-
-    if secim=="3":
-        kullanicilistesi(kullanicilar)
-    
-    if secim =="4":
-        quit()
-
-    else:
-        print("hatalı tuşlama yaptınız...") """
