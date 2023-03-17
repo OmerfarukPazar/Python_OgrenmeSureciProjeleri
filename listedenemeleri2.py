@@ -5,14 +5,33 @@ menu= """\nKullanıcı Ekleme [1]
 Kullanıcı Silme [2]
 Kullanıcı Listesini Görüntüle [3]
 Çıkış [4]"""
-    
+
 def kullaniciekleme(kullaniciekle,kullanicilar):
-    kullanicilar.append(kullaniciekle)
+    if eklemekontrol(kullaniciekle,kullanicilar):
+        print("Kullanıcı Zaten Var....")
+    else:
+        kullanicilar.append(kullaniciekle)
+        print("Kullanıcı Eklendi ...")
+        
     
-# deneme yarım kaldı def kontrol(kullaniciekleme)   
+def eklemekontrol(kullaniciekle,kullanicilar):
+    if kullaniciekle in kullanicilar:
+        return True
+    else:
+        return False
+
+def silmekontrol(kullanicisil,kullanicilar):
+    if kullanicisil in kullanicilar:
+        return True
+    else:
+        return False
 
 def kullanicisilme(kullanicisil,kullanicilar):
-    kullanicilar.remove(kullanicisil)
+    if silmekontrol(kullanicisil,kullanicilar):
+        kullanicilar.remove(kullanicisil)
+        print("kullanici silindi..")
+    else :
+        print("Hatalı Kullanıcı Girişi Yaptınız..")
 """ if kullanicisil is not  kullanicilar:
             print("hatalı kullanıcı girişi yaptınız..")
             kullanicisilme()  """
@@ -30,7 +49,6 @@ def anamenu():
     if secim=="1":
         kullaniciekle=input("eklenecek kullanıcı ismi: ")
         kullaniciekleme(kullaniciekle,kullanicilar)
-        print(kullanicilar)
         input("\nAnamenüye dönmek için enter'a basınız..")
         
     elif secim=="2":
@@ -38,7 +56,6 @@ def anamenu():
             print(i)
         kullanicisil=input("\nSilinmek istenen kullanıcının adı: ")
         kullanicisilme(kullanicisil,kullanicilar)
-        print("kullanici silindi..")
         input("\nAnamenüye dönmek için enter'a basınız..")
 
     elif secim=="3":

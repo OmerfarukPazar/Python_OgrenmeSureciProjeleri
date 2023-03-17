@@ -113,5 +113,12 @@ while True:
     isimekleme(isimekle,isimler)  
  """
 
- 
-
+#Kullanıcı Ekleme Sistemine Login Denemesi 
+#Şimdilik Vazgeçtim 
+# WHATSAPP DENEMESİNE BAŞLIYORUM KONSEPTİ DEĞİŞTİRDİM 
+""" def uyeolma(uyeol,) """ 
+x = ("apple", "banana", "cherry")
+y = list(x)
+y[1] =input("meyve : ")
+x = tuple(y)
+print(x)
