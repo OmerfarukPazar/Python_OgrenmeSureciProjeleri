@@ -12,6 +12,7 @@
 #ANA KATMAN 
 #FONKSİYONLAR
 uyeler=[]
+mesajlar=[]
 def uyeekleme(uyeol:tuple,uyeler:list):
     uyemail=input("Lütfen Mail Adresinizi Giriniz...") 
     mailkontrol(uyemail,uyeler)
@@ -41,9 +42,37 @@ def sifremiunuttum(uyemail1,uyeisim1):
     print("Böyle Bir Kullanıcı Yok....")
     return False
 
+def girisyap(giris_kullanıcıadı,giris_sifre):
+    for sayac,veri in enumerate(uyeler):
+        if giris_kullanıcıadı == veri[1] and giris_sifre == veri[2]:
+            print("Başarıyla Giriş Yaptınız ")
+            secim=input("Mesajlarınızı Görüntülemek İçin [1]**********Mesaj Yazmak İçin [2]*******")
+            if secim == "2":
+                mesaj_yaz = input("Mesaj Yazmak istediğiniz kullanıcının adı : ")
+                for sayac2,veri2 in enumerate(uyeler):
+                    if mesaj_yaz == veri2[1] :
+                        mesaj=input("Mesajınız: ")
+                        mesaj1=(mesaj_yaz,mesaj)
+                        mesajlar.append(mesaj1)
+                        input("Göndermek İstediğinize Emin Misiniz ? \n " +"Mesajınız: " + mesajlar)
+
+
+
+
+            print("Mesajları oku .... vs.vs.vs.vs ")
+
+            cikis=input("çıkış yapmak için 0 tuşlayınız ")
+            if cikis =="0" :
+                return True
+        return True
+
+    print("Hatalı Giriş Yaptınız ... ")
+    anamenu()
+
+
 
 def anamenu():
-    print("Üye Olmak İçin [1] ********* Şifrenizi Unuttuysanız [2]**********")
+    print("Üye Olmak İçin [1] ********* Şifrenizi Unuttuysanız [2]********** Giriş Yapmak İçin [3]************")
     secim=input("secim: ")
     if secim =="1" :
         uyeol=()
@@ -54,6 +83,10 @@ def anamenu():
         uyeisim1=input("üye isminiz: ")
         sifremiunuttum(uyemail1,uyeisim1)
         print(uyeler)
+    elif secim == "3":
+        giris_kullanıcıadı=input("Kullanıcı Adınız : ")
+        giris_sifre=input("Şifreniz :  ")
+        girisyap(giris_kullanıcıadı,giris_sifre)
 
 
 while True:
