@@ -11,7 +11,7 @@ k = cv.waitKey()
 if k == ord("s"):
     cv.imwrite("C:\Program Files (x86)\whatsapp.jpeg", img)
 """)
-
+("")
 ("""vid = cv.VideoCapture(0)
 if not vid.isOpened():
     print("kamera açılamadı")
