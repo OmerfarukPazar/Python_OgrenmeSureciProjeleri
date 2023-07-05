@@ -11,8 +11,9 @@
 
 #ANA KATMAN 
 #FONKSİYONLAR
-uyeler=[]
+uyeler=[("123","ömer","123"),("234","mali","123"),("345","ensar","123")]
 mesajlar=[]
+veri3=[]
 def uyeekleme(uyeol:tuple,uyeler:list):
     uyetel=input("Lütfen 5** *** **** Formatında Telefon Numaranızı Giriniz... ") 
     telkontrol(uyetel,uyeler)
@@ -46,16 +47,24 @@ def girisyap(giris_telno,giris_sifre):
     for sayac,veri in enumerate(uyeler):
         if giris_telno == veri[0] and giris_sifre == veri[2]:
             print("Başarıyla Giriş Yaptınız ")
-            mesajlar[sayac].append()
-            abc=input("mesaj yaz .... ")
+            uyeler.remove(veri)
+            mesaj_menu=input("Mesaj Yazmak İçin [1]    Okumak İçin [2] Tuşlayınız... ")
+            mesaj_kullanici=[]
+            if mesaj_menu == ("1"):
+                mesaj(mesaj_kullanici,veri)
+                #return etmem gereken yer
+                print(mesaj_kullanici)
+def mesaj(mesaj_kullanici,veri):
+    for sayac,veri2 in enumerate(uyeler):
+        veri3.append(veri2[1])
+        print(str(veri3[sayac]) + " için [" + str(sayac) + "] tuşlayınız.." )
+    mesaj_kullanici=str(input())    
+    uyeler.append(veri)   
+    print(uyeler)     
+    #en son bu noktadan sonra return etmem gereken yere return edemiyorum        
+
             
-            return True
-    print("Hatalı Giriş Yaptınız ... ")
-    return False
-    anamenu()
-
-
-
+         
 def anamenu():
     print("Üye Olmak İçin [1] ********* Şifrenizi Unuttuysanız [2]********** Giriş Yapmak İçin [3]************")
     secim=input("secim: ")

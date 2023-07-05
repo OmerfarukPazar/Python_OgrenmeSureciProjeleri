@@ -2,16 +2,37 @@ import numpy as np
 import cv2 as cv
 import sys
 
-("""img = cv.imread("C:\Program Files (x86)\whatsapp.jpeg")
-if img is None:
-    sys.exit("Could not read the image.")
+#resim açar
+#img = cv.imread("C:\Program Files (x86)\deneme.png")
+("""while True: 
+    black = np.zeros((500,500,3),np.uint8)
+    white = np.ones((500,500,3),np.uint8)*255
 
-cv.imshow("Resim", img)
-k = cv.waitKey()
-if k == ord("s"):
-    cv.imwrite("C:\Program Files (x86)\whatsapp.jpeg", img)
-""")
-("")
+    black_kesik=black[0:200,0:500]
+    white_kesik=white[0:200,0:200]
+
+    white[0:200,0:500] = black_kesik
+    cv.imshow("resim",white)
+
+    if cv.waitKey(0) == ord("q"):
+        break
+
+cv.destroyAllWindows()""")
+
+("""
+while True:
+    for i in  range (0,200):
+        black[i] = [0]
+
+    cv.imshow("Resim", img)
+    cv.imshow("resim", black)
+    k = cv.waitKey(0)
+    if k == ord("s"):
+        break
+    
+cv.destroyAllWindows()""")
+
+#video yansıtma
 ("""vid = cv.VideoCapture(0)
 if not vid.isOpened():
     print("kamera açılamadı")
@@ -28,8 +49,9 @@ while True:
 vid.release()
 cv.destroyAllWindows()""")
 
-vid = cv.VideoCapture(0)
-fourcc = cv.VideoCapture.fourcc(*"XVID")
+#video kaydetme
+("""vid = cv.VideoCapture(0)
+fourcc = cv.VideoWriter_fourcc(*"XVID")
 out = cv.VideoWriter("output.avi", fourcc, 20.0, (640,480))
 
 while vid.isOpened():
@@ -37,16 +59,30 @@ while vid.isOpened():
     if not ret:
         print("Can't receive frame (stream end?). Exiting ...")
         break
-    frame = cv.flip(frame,0)
+    
     out.write(frame)
-    cv.imshow("görüntü",frame)
+    cv.imshow("goruntu",frame)
     if cv.waitKey(1) == ord("q"):
         break
 vid.release()
 out.release()
-cv.destroyAllWindows()
+cv.destroyAllWindows()""")
 
 
+#video üzerinde piksel değiştirme
+("""video = cv.VideoCapture(0)
+black=np.zeros((200,640,3),np.uint8)
+white=np.ones((100,640,3),np.uint8)*255
+while True:
+    ret , frame = video.read()
+    frame[0:200,0:640]=black
+    frame[380:480,0:640]=white
+    if cv.waitKey(1) == ord("q"):
+        break 
+    cv.imshow("video", frame)
+
+video.release()
+cv.destroyAllWindows()""")
 
 
 
