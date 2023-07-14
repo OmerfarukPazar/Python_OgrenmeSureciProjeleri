@@ -7,20 +7,20 @@
 # Çıkış Ekranına Dönüp Farklı Bir Kullanıcı ile Giriş Yapmayı Deneyebilecek 
 # Admin Paneli 
 # Şifremi unuttum : Mail Adresi isteyecek kullanıcı adı isteyecek doğruysa yeni şifre oluşturcak ve print verecek
-###############################################
+############################################### ("123","ömer","123"),("234","mali","123"),("345","ensar","123")
 
 #ANA KATMAN 
 #FONKSİYONLAR
-uyeler=[("123","ömer","123"),("234","mali","123"),("345","ensar","123")]
-mesajlar=[]
-veri3=[]
+uyeler=[]
+mesajlar=()
+mesaj_cikis=[]
 def uyeekleme(uyeol:tuple,uyeler:list):
     uyetel=input("Lütfen 5** *** **** Formatında Telefon Numaranızı Giriniz... ") 
     telkontrol(uyetel,uyeler)
     uyeisim=input("Lütfen Oluşturmak İstediğiniz Üye İsminizi Giriniz...")
 
     uyesifre=input("Lütfen Oluşturmak İstediğiniz Üye Sifrenizi Giriniz...")
-    uyeol=(uyetel,uyeisim,uyesifre)
+    uyeol=(uyetel,uyeisim,uyesifre,mesajlar)
     uyeler.append(uyeol)
     print("Başarıyla Kayıt Olundu...")
 
@@ -49,19 +49,29 @@ def girisyap(giris_telno,giris_sifre):
             print("Başarıyla Giriş Yaptınız ")
             uyeler.remove(veri)
             mesaj_menu=input("Mesaj Yazmak İçin [1]    Okumak İçin [2] Tuşlayınız... ")
-            mesaj_kullanici=[]
             if mesaj_menu == ("1"):
-                mesaj(mesaj_kullanici,veri)
-                #return etmem gereken yer
-                print(mesaj_kullanici)
-def mesaj(mesaj_kullanici,veri):
+                mesaj(mesaj_cikis,veri)
+                mesaj_gönderilecek=input("Yazmak İstediğiniz Mesaj... : ")
+                #tam bu noktaya döndüğünde mesaj çıkış verisi sıfırlanıyor çözemedim
+                mesaj_yazim(mesaj_gönderilecek,mesaj_cikis)
+
+def mesaj_yazim(mesaj_gönderilecek,mesaj_cikis):
+    for sayac,veri4 in enumerate(uyeler):
+        if veri4[1] == mesaj_cikis:
+            veri4[3] = mesaj_gönderilecek
+            uyeler[veri4]=veri4
+    print(uyeler)
+    anamenu()
+            
+def mesaj(mesaj_cikis,veri):
+    veri3 =[]
     for sayac,veri2 in enumerate(uyeler):
         veri3.append(veri2[1])
         print(str(veri3[sayac]) + " için [" + str(sayac) + "] tuşlayınız.." )
-    mesaj_kullanici=str(input())    
-    uyeler.append(veri)   
-    print(uyeler)     
-    #en son bu noktadan sonra return etmem gereken yere return edemiyorum        
+    a = int(input())
+    mesaj_cikis=(veri3[a])
+    uyeler.append(veri) 
+        
 
             
          
@@ -70,7 +80,9 @@ def anamenu():
     secim=input("secim: ")
     if secim =="1" :
         uyeol=()
+        print(uyeler)
         uyeekleme(uyeol,uyeler)
+    
     elif secim =="2":
         print("Hatırladığınız Telefon Numaranız ve Kullanıcı Adınız ? ")
         uyetel1=input("Telefon Numaranız: ")
