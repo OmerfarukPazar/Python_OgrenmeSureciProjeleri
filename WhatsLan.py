@@ -50,26 +50,28 @@ def girisyap(giris_telno,giris_sifre):
             uyeler.remove(veri)
             mesaj_menu=input("Mesaj Yazmak İçin [1]    Okumak İçin [2] Tuşlayınız... ")
             if mesaj_menu == ("1"):
-                mesaj(mesaj_cikis,veri)
+                mesaj(veri)
                 mesaj_gönderilecek=input("Yazmak İstediğiniz Mesaj... : ")
                 #tam bu noktaya döndüğünde mesaj çıkış verisi sıfırlanıyor çözemedim
                 mesaj_yazim(mesaj_gönderilecek,mesaj_cikis)
 
 def mesaj_yazim(mesaj_gönderilecek,mesaj_cikis):
     for sayac,veri4 in enumerate(uyeler):
-        if veri4[1] == mesaj_cikis:
-            veri4[3] = mesaj_gönderilecek
+        if veri4[1] == mesaj_cikis[0]:
+            veri4[3] = mesaj_gönderilecek[0]
             uyeler[veri4]=veri4
+        else :
+            print("deneme")
     print(uyeler)
     anamenu()
             
-def mesaj(mesaj_cikis,veri):
+def mesaj(veri):
     veri3 =[]
     for sayac,veri2 in enumerate(uyeler):
         veri3.append(veri2[1])
         print(str(veri3[sayac]) + " için [" + str(sayac) + "] tuşlayınız.." )
     a = int(input())
-    mesaj_cikis=(veri3[a])
+    mesaj_cikis.append(veri3[a])
     uyeler.append(veri) 
         
 

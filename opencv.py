@@ -3,24 +3,24 @@ import cv2 as cv
 import sys
 
 #resim açar
-#img = cv.imread("C:\Program Files (x86)\deneme.png")
+#img = cv.imread("C:\Program Files (x86)\deneme.jpg")
 ("""while True: 
-    black = np.zeros((500,500,3),np.uint8)
+    cv.imshow("resim",img)
+    if cv.waitKey(0) == ord("q"):
+        break
+
+cv.destroyAllWindows()""")
+#ek    
+("""black = np.zeros((500,500,3),np.uint8)
     white = np.ones((500,500,3),np.uint8)*255
 
     black_kesik=black[0:200,0:500]
     white_kesik=white[0:200,0:200]
 
-    white[0:200,0:500] = black_kesik
-    cv.imshow("resim",white)
+    white[0:200,0:500] = black_kesik""")
+#  
+("""while True:
 
-    if cv.waitKey(0) == ord("q"):
-        break
-
-cv.destroyAllWindows()""")
-
-("""
-while True:
     for i in  range (0,200):
         black[i] = [0]
 
@@ -30,7 +30,8 @@ while True:
     if k == ord("s"):
         break
     
-cv.destroyAllWindows()""")
+cv.destroyAllWindows()
+""")
 
 #video yansıtma
 ("""vid = cv.VideoCapture(0)
@@ -84,9 +85,30 @@ while True:
 video.release()
 cv.destroyAllWindows()""")
 
+resim = cv.imread("C:\Program Files (x86)\ptesla.jpg",0)
+plaka = cv.imread("C:\Program Files (x86)\plaka.jpg",0)
+h,w=plaka.shape
 
+methods=['cv.TM_CCOEFF', 'cv.TM_CCOEFF_NORMED', 'cv.TM_CCORR',
+ 'cv.TM_CCORR_NORMED', 'cv.TM_SQDIFF', 'cv.TM_SQDIFF_NORMED']
 
+for meth in methods:
+    resim2= resim.copy()
+    method = eval(meth)
 
+    sonuc = cv.matchTemplate(resim2,plaka, method)
+    min_val, max_val, min_loc, max_loc = cv.minMaxLoc(sonuc)
+ 
+    if method in [cv.TM_SQDIFF, cv.TM_SQDIFF_NORMED]:
+        top_left = min_loc
+    else:
+        top_left = max_loc
+
+    bottom_right = (top_left[0] + w, top_left[1] + h)
+    cv.rectangle(resim2, top_left ,bottom_right, 0, 3 )
+    cv.imshow(  "resim", resim2)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
 
 
 
